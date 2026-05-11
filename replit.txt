@@ -1,0 +1,5 @@
+run = "python vps_panel-2.py"
+entrypoint = "vps_panel-2.py"
+
+[nix]
+channel = "stable-23_11"

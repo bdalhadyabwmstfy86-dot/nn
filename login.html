@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝗢𝗠𝗔𝗥 𝗨𝗡𝗟𝗜𝗠𝗜𝗧𝗘𝗗 𝗩𝗣𝗦 — Login</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter','Segoe UI',Tahoma,sans-serif}
+html,body{height:100%}
+body{
+  background:#1f2933;
+  color:#d6dde3;display:flex;align-items:center;justify-content:center;min-height:100vh;
+  position:relative;overflow:hidden;
+}
+body::before{
+  content:'';
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:linear-gradient(135deg,rgba(31,41,51,.4) 0%,rgba(43,58,67,.5) 100%);
+  z-index:0;
+}
+body::after{
+  content:'';
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:linear-gradient(135deg,rgba(31,41,51,.85) 0%,rgba(43,58,67,.9) 100%);
+  z-index:1;
+}
+.login-container{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  width:100%;height:100%;
+}
+.card{
+  width:min(420px,92vw);
+  background:#2b3a43;
+  border:1px solid #3a4a55;
+  border-radius:8px;
+  padding:32px 28px;
+  box-shadow:0 10px 40px rgba(0,0,0,.4);
+  position:relative;
+}
+.brand{text-align:center;margin-bottom:24px}
+.brand h1{
+  font-size:20px;font-weight:600;color:#fff;margin-bottom:6px;
+}
+.brand .accent{color:#29c7d3}
+.brand p{color:#7a8c98;font-size:12px}
+.field{margin-bottom:14px}
+.field label{display:block;color:#9aa9b3;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.field input{
+  width:100%;padding:11px 14px;
+  background:#1f2933;
+  border:1px solid #3a4a55;
+  border-radius:4px;color:#fff;font-size:14px;outline:none;
+  transition:.2s;
+}
+.field input:focus{border-color:#29c7d3;box-shadow:0 0 0 2px rgba(41,199,211,.15)}
+.btn{
+  width:100%;padding:12px;border:0;border-radius:4px;cursor:pointer;
+  background:#2f6fed;color:#fff;font-weight:600;font-size:14px;
+  transition:.2s;margin-top:6px;
+}
+.btn:hover{background:#1d5cd8}
+.error{
+  margin-top:14px;padding:10px;border-radius:4px;
+  background:rgba(229,57,53,.15);
+  border:1px solid rgba(229,57,53,.4);
+  color:#ff8a8a;text-align:center;font-size:13px;
+}
+.foot{text-align:center;margin-top:20px;font-size:11px;color:#5a6c78}
+.profile-avatar{
+  position:absolute;top:-36px;left:50%;transform:translateX(-50%);
+  width:72px;height:72px;border-radius:50%;
+  border:3px solid #29c7d3;
+  box-shadow:0 4px 16px rgba(41,199,211,.4);
+  object-fit:cover;
+  background:#1a242c;
+}
+.brand-wrap{margin-top:44px}
+</style>
+</head>
+<body>
+<div class="login-container">
+<audio id="entry-audio" autoplay loop preload="auto">
+  <source src="https://b.top4top.io/m_3779fnnpd1.m4a" type="audio/mp4">
+</audio>
+<div class="card">
+  <img class="profile-avatar" src="https://iili.io/BL7bG5l.png" alt="Avatar" onerror="this.style.display='none'">
+  <div class="brand-wrap">
+  <div class="brand">
+    <h1>𝗢𝗠𝗔𝗥 𝗨𝗡𝗟𝗜𝗠𝗜𝗧𝗘𝗗 𝗩𝗣𝗦<span class="accent">LLC</span></h1>
+    <p>Server Management Panel</p>
+  </div>
+  <form method="post" action="/login">
+    <div class="field">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="Username" required autofocus>
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Password" required>
+    </div>
+    <button class="btn" type="submit">Login</button>
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+  </form>
+  <div class="foot">Pterodactyl® © 2015 - 2026</div>
+  </div>
+</div>
+</div>
+<script>
+(function(){
+  var a=document.getElementById('entry-audio');
+  if(!a) return;
+  a.volume=0.7;
+  a.loop=true;
+  function tryPlay(){
+    var p=a.play();
+    if(p!==undefined){ p.catch(function(){}); }
+  }
+  tryPlay();
+  function keepAlive(){
+    if(a.paused||a.ended){
+      tryPlay();
+    }
+  }
+  setInterval(keepAlive,500);
+  a.addEventListener('ended',function(){ a.currentTime=0; tryPlay(); });
+  a.addEventListener('pause',function(){ setTimeout(tryPlay,100); });
+  a.addEventListener('error',function(){ setTimeout(function(){ a.load(); tryPlay(); },1000); });
+  document.addEventListener('click',tryPlay);
+  document.addEventListener('keydown',tryPlay);
+  document.addEventListener('touchstart',tryPlay);
+  document.addEventListener('visibilitychange',function(){
+    if(!document.hidden){ tryPlay(); }
+  });
+})();
+</script>
+</body>
+</html>
